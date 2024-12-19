@@ -9,7 +9,16 @@ export default {
     			md: 'calc(var(--radius) - 2px)',
     			sm: 'calc(var(--radius) - 4px)'
     		},
-    		colors: {}
+			colors: {
+				primary: "#118B50",
+				secondary: "#5DB996",
+				accent: "#E3F0AF",
+				neutral: "#FBF6E9",
+			},
+			fontFamily: {
+				playfair: ["Playfair Display", "Georgia", "Serif"],
+				lato: ["Lato", "Arial", "Sans-Serif"]
+			}
     	}
     },
 	plugins: [require("tailwindcss-animate")],
