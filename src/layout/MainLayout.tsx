@@ -5,7 +5,6 @@ const MainLayout = () => {
 	return (
 		<div className="min-h-screen bg-neutral">
 			<Navbar />
-			<div>Main Layout</div>
 			<Outlet />
 		</div>
 	);
