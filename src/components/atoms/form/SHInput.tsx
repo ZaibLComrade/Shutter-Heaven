@@ -6,19 +6,22 @@ interface IProps {
 	name: string;
 	label: string;
 	placeholder?: string;
+	className?: string;
+	type?: "password" | "text";
+	labelClass?:string;
 }
 
-const SHInput = ({ name, label, placeholder }: IProps) => {
+const SHInput = ({ name, className, label, placeholder, labelClass="", type = "text" }: IProps) => {
 	const { control } = useFormContext();
-	
+
 	return (
 		<FormField
 			control={control}
 			name={name}
 			render={({ field }) => (
 				<FormItem>
-					<FormLabel>{label}</FormLabel>
-					<Input placeholder={placeholder} {...field} />
+					<FormLabel className={ labelClass } htmlFor={ name }>{label}</FormLabel>
+					<Input className={`${className} bg-white`} placeholder={placeholder} {...field} type={type} />
 					<FormMessage />
 				</FormItem>
 			)}

@@ -39,7 +39,7 @@ const Navbar = () => {
 			<NavigationMenu>
 				<NavigationMenuList>
 					{routes.map(({ label, href }) => (
-						<NavigationMenuItem key={href}>
+						<NavigationMenuItem key={href + label}>
 							<NavLink to={href}>
 								<Button
 									variant="ghost"

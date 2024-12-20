@@ -7,9 +7,11 @@ interface IProps {
 	defaultValues?: DefaultValues<unknown>;
 	children: ReactNode;
 	onSubmit: SubmitHandler<FieldValues>;
+	className?: string
+	rest?: unknown;
 }
 
-const SHForm = ({ resolver, defaultValues, children, onSubmit }: IProps) => {
+const SHForm = ({ resolver, defaultValues, children, onSubmit, ...rest }: IProps) => {
 	const formConfig: {
 		resolver?: Resolver;
 		defaultValues?: DefaultValues<unknown>;
@@ -19,8 +21,8 @@ const SHForm = ({ resolver, defaultValues, children, onSubmit }: IProps) => {
 	if (defaultValues) formConfig["defaultValues"] = defaultValues;
 
 	const form = useForm(formConfig);
-	return <Form {...form}>
-		<form onSubmit={ form.handleSubmit(onSubmit) }>
+	return <Form {...form} >
+		<form onSubmit={ form.handleSubmit(onSubmit) } { ...rest }>
 			{ children }
 		</form>
 	</Form>;

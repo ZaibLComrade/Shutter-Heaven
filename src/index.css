@@ -6,3 +6,15 @@
 		--radius: 0.5rem;
 	}
 }
+
+.debug {
+	border: 1px solid red;
+}
+
+.debug > * {
+	border: 1px solid green;
+}
+
+.debug > * > * {
+	border: 1px solid blue;
+}
