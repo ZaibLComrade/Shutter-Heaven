@@ -8,6 +8,9 @@ import {
 	signOut,
 	User,
 } from "firebase/auth";
+import {IAuthContextValues} from "@/@types";
+
+
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [user, setUser] = useState<User | null>(null);
@@ -36,8 +39,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 		return signOut(auth);
 	};
 
-	const contextValues = {
+	const contextValues: IAuthContextValues = {
 		user,
+		setUser,
 		loading,
 		setLoading,
 		registerUser,

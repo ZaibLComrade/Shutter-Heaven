@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import z from "zod";
 import { roles, rolesArray } from "@/constants";
+import useAuth from "@/hooks/useAuth";
 
 const RegisterForm = () => {
-	const onSubmit: SubmitHandler<FieldValues> = (values) => {
-
+	const { registerUser, setUser } = useAuth();
+	const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+		const { email, password } = values;
+		try {
+			const { user } = await registerUser(email, password)
+			setUser(user)
+		} catch (err) {
+			console.log(err)
+		}
 	};
 
 	const formSchema = z
@@ -96,10 +104,13 @@ const RegisterForm = () => {
 						label: val,
 					}))}
 				/>
-				<div>
-
-				</div>
-				<Button type="submit" className="font-bold text-neutral bg-primary">Submit</Button>
+				<div></div>
+				<Button
+					type="submit"
+					className="font-bold text-neutral bg-primary"
+				>
+					Submit
+				</Button>
 			</SHForm>
 		</div>
 	);

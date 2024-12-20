@@ -1,8 +1,9 @@
 import {useContext} from "react"
 import { AuthContext } from "@/provider"
+import {IAuthContextValues} from "@/@types";
 
 const useAuth = () => {
-	const auth = useContext(AuthContext);
+	const auth = useContext<IAuthContextValues>(AuthContext);
 	return auth;
 }
 
